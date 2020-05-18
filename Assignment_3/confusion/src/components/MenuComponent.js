@@ -1,8 +1,15 @@
-import React from 'react';
-import { Card, CardImg, CardImgOverlay, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import React from "react";
+import {
+  Card,
+  CardImg,
+  CardImgOverlay,
+  CardTitle,
+  Breadcrumb,
+  BreadcrumbItem
+} from "reactstrap";
+import { Link } from "react-router-dom";
 
-function RenderMenuItem( {dish, onClick} ) {
+function RenderMenuItem({ dish, onClick }) {
   return (
     <Card>
       <Link to={`/menu/${dish.id}`}>
@@ -15,12 +22,11 @@ function RenderMenuItem( {dish, onClick} ) {
   );
 }
 
-const Menu = (props) => {
-
-  const menu = props.dishes.map((dish) => {
+const Menu = props => {
+  const menu = props.dishes.map(dish => {
     return (
-      <div className="col-12 col-md-5 m-1"  key={dish.id}>
-        <RenderMenuItem dish={dish} onClick={props.onClick} />
+      <div className="col-12 col-md-5 m-1" key={dish.id}>
+        <RenderMenuItem dish={dish} onClick={props.onDishSelect} />
       </div>
     );
   });
@@ -29,7 +35,9 @@ const Menu = (props) => {
     <div className="container">
       <div className="row">
         <Breadcrumb>
-          <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
+          <BreadcrumbItem>
+            <Link to="/home">Home</Link>
+          </BreadcrumbItem>
           <BreadcrumbItem active>Menu</BreadcrumbItem>
         </Breadcrumb>
         <div className="col-12">
@@ -37,12 +45,9 @@ const Menu = (props) => {
           <hr />
         </div>
       </div>
-      <div className="row">
-        {menu}
-      </div>
+      <div className="row">{menu}</div>
     </div>
   );
-
-}
+};
 
 export default Menu;
